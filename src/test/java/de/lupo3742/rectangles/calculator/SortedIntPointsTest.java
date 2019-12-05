@@ -1,4 +1,4 @@
-package de.lupo3742.rectangles.verticalrectangles;
+package de.lupo3742.rectangles.calculator;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,18 +8,18 @@ import java.util.Iterator;
 
 import org.junit.jupiter.api.Test;
 
-import de.lupo3742.rectangles.verticalrectangles.IntPoint;
-import de.lupo3742.rectangles.verticalrectangles.SortedIntPoints;
+import de.lupo3742.rectangles.calculator.SortableIntPoint;
+import de.lupo3742.rectangles.calculator.SortedIntPoints;
 
 public class SortedIntPointsTest {
 
     @Test
     public void shouldIgnoreDuplicatePoints() {
-        IntPoint pOne = new IntPoint(1, 2); 
-        IntPoint pTwo = new IntPoint(1, 2);
+        SortableIntPoint pOne = new SortableIntPoint(1, 2); 
+        SortableIntPoint pTwo = new SortableIntPoint(1, 2);
 
         SortedIntPoints sortedPoints = new SortedIntPoints(pOne, pTwo);
-        Iterator<IntPoint> iterator = sortedPoints.iterator();
+        Iterator<SortableIntPoint> iterator = sortedPoints.iterator();
 
         assertEquals(pOne, iterator.next());
         assertFalse(iterator.hasNext(), "Second element found in list");
@@ -27,8 +27,8 @@ public class SortedIntPointsTest {
     
     @Test
     public void shouldSortByAscendingX() {
-        IntPoint smallX = new IntPoint(1, 2); 
-        IntPoint largeX = new IntPoint(2, 2);
+        SortableIntPoint smallX = new SortableIntPoint(1, 2); 
+        SortableIntPoint largeX = new SortableIntPoint(2, 2);
         
         // the sortedPoints shall be independent of the order the Points are provided,
         // therefore verify if the result is independent of the ordering provided in the constructor
@@ -41,8 +41,8 @@ public class SortedIntPointsTest {
 
     @Test
     public void shouldSortByAscendingY() {
-        IntPoint smallY = new IntPoint(1, 1); 
-        IntPoint largeY = new IntPoint(1, 2);
+        SortableIntPoint smallY = new SortableIntPoint(1, 1); 
+        SortableIntPoint largeY = new SortableIntPoint(1, 2);
         
         SortedIntPoints sortedPointsSmallXFirst = new SortedIntPoints(smallY, largeY);
         verifyFirstSortedElement(sortedPointsSmallXFirst, smallY);
@@ -51,20 +51,20 @@ public class SortedIntPointsTest {
         verifyFirstSortedElement(sortedPointsLargeXFirst, smallY);
     }
     
-    private static void verifyFirstSortedElement(SortedIntPoints sortedPointsSmallXFirst, IntPoint shouldBeFirstElement) {
+    private static void verifyFirstSortedElement(SortedIntPoints sortedPointsSmallXFirst, SortableIntPoint shouldBeFirstElement) {
         assertEquals(shouldBeFirstElement, sortedPointsSmallXFirst.iterator().next(), "First element in sorted list differs");
     }
 
     @Test
     public void shouldSortFirstXThenY() {
-        IntPoint pOne = new IntPoint(1, 1); 
-        IntPoint pTwo = new IntPoint(1, 2);
-        IntPoint pThree = new IntPoint(2, 1);
-        IntPoint pFour = new IntPoint(2, 2);
+        SortableIntPoint pOne = new SortableIntPoint(1, 1); 
+        SortableIntPoint pTwo = new SortableIntPoint(1, 2);
+        SortableIntPoint pThree = new SortableIntPoint(2, 1);
+        SortableIntPoint pFour = new SortableIntPoint(2, 2);
         
         // provide points in random order
         SortedIntPoints sortedPoints = new SortedIntPoints(pThree, pOne, pFour, pTwo);
-        Iterator<IntPoint> iterator = sortedPoints.iterator();
+        Iterator<SortableIntPoint> iterator = sortedPoints.iterator();
         assertEquals(pOne, iterator.next(), "First element in sorted list differs");
         assertEquals(pTwo, iterator.next(), "Second element in sorted list differs");
         assertEquals(pThree, iterator.next(), "Third element in sorted list differs");
