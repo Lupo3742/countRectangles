@@ -12,7 +12,7 @@ public class SortableIntPoint implements Comparable<SortableIntPoint> {
 
     // first sort by x-values, then by y-values
     private static final Comparator<SortableIntPoint> POINT_COMPARATOR = 
-            Comparator.<SortableIntPoint>comparingInt(SortableIntPoint::getX).thenComparingInt(SortableIntPoint::getY);
+            Comparator.comparingInt(SortableIntPoint::getX).thenComparingInt(SortableIntPoint::getY);
 
     private final int x;
     private final int y;

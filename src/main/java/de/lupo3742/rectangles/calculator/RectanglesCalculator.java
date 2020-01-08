@@ -28,6 +28,7 @@ public class RectanglesCalculator {
      * Since points is sorted in ascending order by x and y, it is sufficient to look for 
      * matching points above and to the right of x, and finally for a potential top right corner of the rectangle.
      * By this procedure duplicate findings will be avoided. 
+     * 
      * @return the number of vertical or horizontal rectangles found.
      */
     public int getNumberRectangles() {
@@ -44,6 +45,11 @@ public class RectanglesCalculator {
         return numRectangles;
     }
 
+    /**
+     * Returns all points above the reference point, i.e. same x-value but larger y-values 
+     * @param reference point
+     * @return all points above the reference
+     */
     Collection<SortableIntPoint> pointsAbove(SortableIntPoint reference) {
         return points.stream()
                 .filter(p -> isAbove(reference, p))
@@ -55,6 +61,11 @@ public class RectanglesCalculator {
                 && (p.getY() > pRef.getY());
     }
 
+    /**
+     * Returns all points to the right of the reference point, i.e. same y-value but larger x-values 
+     * @param reference point
+     * @return all points to the right of the reference
+     */
     Collection<SortableIntPoint> pointsToTheRight(SortableIntPoint reference) {
         return points.stream()
                 .filter(p -> isToTheRight(reference, p))
@@ -66,6 +77,13 @@ public class RectanglesCalculator {
                 && (p.getY() == pRef.getY());
     }
     
+    /**
+     * Input is the top-left and bottom-right point, tests if a corresponding top-right point exists.
+     * The bottom-left point of the potential rectangle is not needed. 
+     * @param topLeft point
+     * @param bottomRight point
+     * @return true if top-right is present
+     */
     boolean hasRectangleTopRightCorner(SortableIntPoint topLeft, SortableIntPoint bottomRight) {
         return points.stream()
                 .anyMatch(p -> isTopLeftCorner(topLeft, bottomRight, p));

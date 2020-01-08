@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 public class RectanglesCalculatorTest {
 
     @Test
-    public void testNoPoint() {
+    public void shouldFindNoRectangleWithNoPoint() {
         RectanglesCalculator calculator = new RectanglesCalculator();
         
         assertThat(calculator.getNumberRectangles()).isEqualTo(0);
     }
 
     @Test
-    public void testTwoPoints() {
+    public void shouldFindNoRectangleWithTwoPoints() {
         SortableIntPoint pOne = new SortableIntPoint(1, 1);
         SortableIntPoint pTwo = new SortableIntPoint(1, 2);
         
@@ -24,7 +24,7 @@ public class RectanglesCalculatorTest {
     }
     
     @Test
-    public void testFourPointsNoRectangle() {
+    public void shouldFindNoRectangleWithFourPoints() {
         SortableIntPoint pOne = new SortableIntPoint(1, 1);
         SortableIntPoint pTwo = new SortableIntPoint(1, 3);
         SortableIntPoint pThree = new SortableIntPoint(4, 1);
@@ -41,7 +41,7 @@ public class RectanglesCalculatorTest {
      * x x
      */
     @Test
-    public void testSingleRectangle() {
+    public void shouldFindOneRectangle() {
         SortableIntPoint pBottomLeft = new SortableIntPoint(1, 1);
         SortableIntPoint pBottomRight = new SortableIntPoint(1, 2);
         SortableIntPoint pTopLeft = new SortableIntPoint(2, 1);
@@ -60,7 +60,7 @@ public class RectanglesCalculatorTest {
      *   x x
      */
     @Test
-    public void testTwoRectangles() {
+    public void shouldFindTwoRectangles() {
         SortableIntPoint pBottomMiddle = new SortableIntPoint(2, 1);
         SortableIntPoint pBottomRight = new SortableIntPoint(3, 1);
 
@@ -83,7 +83,7 @@ public class RectanglesCalculatorTest {
      * x x x
      */
     @Test
-    public void testThreeRectangles() {
+    public void shouldFindThreeRectangles() {
         SortableIntPoint pBottomLeft = new SortableIntPoint(1, 1);
         SortableIntPoint pBottomMiddle = new SortableIntPoint(1, 2);
         SortableIntPoint pBottomRight = new SortableIntPoint(1, 3);
@@ -105,7 +105,7 @@ public class RectanglesCalculatorTest {
      * x x x
      */
     @Test
-    public void testNineRectangles() {
+    public void shouldFindNineRectangles() {
         SortableIntPoint pBottomLeft = new SortableIntPoint(1, 1);
         SortableIntPoint pBottomMiddle = new SortableIntPoint(2, 1);
         SortableIntPoint pBottomRight = new SortableIntPoint(3, 1);

@@ -14,7 +14,10 @@ import java.util.stream.Stream;
  */
 class SortedIntPoints implements Iterable<SortableIntPoint> {
 
-    // TreeSet enforces an ordering as defined in Point
+	/**
+	 * The set of points.
+	 * The TreeSet enforces an ordering as defined in Point. 
+	 */
     private final Set<SortableIntPoint> sortedPoints = new TreeSet<>();
 
     public SortedIntPoints(Stream<SortableIntPoint> points) {
